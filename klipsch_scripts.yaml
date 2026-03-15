@@ -1,0 +1,1438 @@
+klipsch_mute:
+    alias: 'Mute Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-mute
+    sequence:
+        - action: shell_command.klipsch_check_mute
+          response_variable: ismuted1
+        - variables:
+            ismuted: '"{{ ismuted1 }}"'
+        - choose:
+            - conditions: "{{ 'true' in ismuted }}"
+              sequence:
+                action: shell_command.klipsch_muteoff
+          default:
+            sequence:
+                action: shell_command.klipsch_muteon
+                
+klipsch_nightmode:
+    alias: 'Toggle Night Mode Klipsch Flexus'
+    mode: single
+    icon: mdi:weather-night
+    sequence:
+        - action: shell_command.klipsch_check_night
+          response_variable: isnight1
+        - variables:
+            isnight: '"{{ isnight1 }}"'
+        - choose:
+            - conditions: "{{ 'nightMode_1' in isnight }}"
+              sequence:
+                action: shell_command.klipsch_nightoff
+          default:
+            sequence:
+              action: shell_command.klipsch_nighton
+              
+klipsch_dialogmode:
+    alias: 'Toggle Dialog Mode Klipsch Flexus'
+    mode: single
+    icon: mdi:forum-outline
+    sequence:
+        - action: shell_command.klipsch_check_dialog
+          response_variable: isdialog1
+        - variables:
+            isdialog: '"{{ isdialog1 }}"'
+        - choose:
+            - conditions: "{{ 'off' in isdialog }}"
+              sequence:
+                action: shell_command.klipsch_dialoglow
+            - conditions: "{{ 'dialog_1' in isdialog }}"
+              sequence:
+                action: shell_command.klipsch_dialogmedium
+            - conditions: "{{ 'dialog_2' in isdialog }}"
+              sequence:
+                action: shell_command.klipsch_dialoghigh
+          default:
+            sequence:
+                action: shell_command.klipsch_dialogoff
+
+klipsch_power:
+    alias: 'Toggle Power Klipsch Flexus'
+    mode: single
+    icon: mdi:power
+    sequence:
+        - action: shell_command.klipsch_check_power
+          response_variable: ispower1
+        - variables:
+            ispower: '"{{ ispower1 }}"'
+        - choose:
+            - conditions: "{{ 'networkStandby' in ispower }}"
+              sequence:
+                action: shell_command.klipsch_on
+          default:
+            sequence:
+                action: shell_command.klipsch_off
+
+klipsch_soundmode:
+    alias: 'Toggle Sound Mode Klipsch Flexus'
+    mode: single
+    icon: mdi:multimedia
+    sequence:
+        - action: shell_command.klipsch_check_mode
+          response_variable: ismode1
+        - variables:
+            ismode: '"{{ ismode1 }}"'
+        - choose:
+            - conditions: "{{ 'music' in ismode }}"
+              sequence:
+                action: shell_command.klipsch_movie
+          default:
+            sequence:
+                action: shell_command.klipsch_music
+
+klipsch_led:
+    alias: 'Toggle LED Brightness Klipsch Flexus'
+    mode: single
+    icon: mdi:brightness-5
+    sequence:
+        - action: shell_command.klipsch_check_led
+          response_variable: isled1
+        - variables:
+            isled: '"{{ isled1 }}"'
+        - choose:
+            - conditions: "{{ 'normal' in isled }}"
+              sequence:
+                action: shell_command.klipsch_leddim
+          default:
+            sequence:
+                action: shell_command.klipsch_lednormal
+
+klipsch_volumeup:
+    alias: 'Volume Up Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_volume
+          response_variable: isvolume1
+        - variables:
+            isvolume: '"{{ isvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':0}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_1
+            - conditions: "{{ ':1}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_2
+            - conditions: "{{ ':2}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_3
+            - conditions: "{{ ':3}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_4
+            - conditions: "{{ ':4}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_5
+            - conditions: "{{ ':5}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_6
+            - conditions: "{{ ':6}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_7
+            - conditions: "{{ ':7}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_8
+            - conditions: "{{ ':8}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_9
+            - conditions: "{{ ':9}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_10
+            - conditions: "{{ ':10}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_11
+            - conditions: "{{ ':11}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_12
+            - conditions: "{{ ':12}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_13
+            - conditions: "{{ ':13}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_14
+            - conditions: "{{ ':14}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_15
+            - conditions: "{{ ':15}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_16
+            - conditions: "{{ ':16}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_17
+            - conditions: "{{ ':17}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_18
+            - conditions: "{{ ':18}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_19
+            - conditions: "{{ ':19}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_20
+            - conditions: "{{ ':20}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_21
+            - conditions: "{{ ':21}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_22
+            - conditions: "{{ ':22}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_23
+            - conditions: "{{ ':23}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_24
+            - conditions: "{{ ':24}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_25
+            - conditions: "{{ ':25}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_26
+            - conditions: "{{ ':26}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_27
+            - conditions: "{{ ':27}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_28
+            - conditions: "{{ ':28}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_29
+            - conditions: "{{ ':29}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_30
+            - conditions: "{{ ':30}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_31
+            - conditions: "{{ ':31}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_32
+            - conditions: "{{ ':32}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_33
+            - conditions: "{{ ':33}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_34
+            - conditions: "{{ ':34}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_35
+            - conditions: "{{ ':35}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_36
+            - conditions: "{{ ':36}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_37
+            - conditions: "{{ ':37}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_38
+            - conditions: "{{ ':38}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_39
+            - conditions: "{{ ':39}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_40
+            - conditions: "{{ ':40}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_41
+            - conditions: "{{ ':41}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_42
+            - conditions: "{{ ':42}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_43
+            - conditions: "{{ ':43}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_44
+            - conditions: "{{ ':44}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_45
+            - conditions: "{{ ':45}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_46
+            - conditions: "{{ ':46}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_47
+            - conditions: "{{ ':47}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_48
+            - conditions: "{{ ':48}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_49
+            - conditions: "{{ ':49}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_50
+            - conditions: "{{ ':50}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_50
+          default:
+            sequence:
+                action: shell_command.klipsch_volume_20
+
+klipsch_volumedown:
+    alias: 'Volume Down Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_volume
+          response_variable: isvolume1
+        - variables:
+            isvolume: '"{{ isvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':50}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_49
+            - conditions: "{{ ':49}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_48
+            - conditions: "{{ ':48}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_47
+            - conditions: "{{ ':47}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_46
+            - conditions: "{{ ':46}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_45
+            - conditions: "{{ ':45}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_44
+            - conditions: "{{ ':44}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_43
+            - conditions: "{{ ':43}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_42
+            - conditions: "{{ ':42}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_41
+            - conditions: "{{ ':41}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_40
+            - conditions: "{{ ':40}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_39
+            - conditions: "{{ ':39}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_38
+            - conditions: "{{ ':38}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_37
+            - conditions: "{{ ':37}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_36
+            - conditions: "{{ ':36}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_35
+            - conditions: "{{ ':35}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_34
+            - conditions: "{{ ':34}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_33
+            - conditions: "{{ ':33}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_32
+            - conditions: "{{ ':32}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_31
+            - conditions: "{{ ':31}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_30
+            - conditions: "{{ ':30}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_29
+            - conditions: "{{ ':29}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_28
+            - conditions: "{{ ':28}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_27
+            - conditions: "{{ ':27}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_26
+            - conditions: "{{ ':26}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_25
+            - conditions: "{{ ':25}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_24
+            - conditions: "{{ ':24}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_23
+            - conditions: "{{ ':23}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_22
+            - conditions: "{{ ':22}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_21
+            - conditions: "{{ ':21}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_20
+            - conditions: "{{ ':20}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_19
+            - conditions: "{{ ':19}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_18
+            - conditions: "{{ ':18}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_17
+            - conditions: "{{ ':17}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_16
+            - conditions: "{{ ':16}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_15
+            - conditions: "{{ '15}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_14
+            - conditions: "{{ ':14}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_13
+            - conditions: "{{ ':13}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_12
+            - conditions: "{{ ':12}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_11
+            - conditions: "{{ ':11}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_10
+            - conditions: "{{ ':10}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_9
+            - conditions: "{{ ':9}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_8
+            - conditions: "{{ ':8}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_7
+            - conditions: "{{ ':7}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_6
+            - conditions: "{{ ':6}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_5
+            - conditions: "{{ ':5}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_4
+            - conditions: "{{ ':4}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_3
+            - conditions: "{{ ':3}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_2
+            - conditions: "{{ ':2}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_1
+            - conditions: "{{ ':1}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_0
+            - conditions: "{{ ':0}' in isvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_0
+          default:
+            sequence:
+                action: shell_command.klipsch_volume_20
+
+klipsch_dirac:
+    alias: 'Toggle Dirac Klipsch Flexus'
+    mode: single
+    icon: mdi:surround-sound
+    sequence:
+        - action: shell_command.klipsch_check_dirac
+          response_variable: isdirac1
+        - action: shell_command.klipsch_check_diracslots
+          response_variable: isdiracslots1
+        - variables:
+            isdirac: '"{{ isdirac1 }}"'
+            isdiracslots: '"{{ isdiracslots1 }}"'
+        - choose:
+            - conditions: "{{ ':-1' in isdirac and ':1,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':-1' in isdirac and (':2,' in isdiracslots or ':3,' in isdiracslots or ':4,' in isdiracslots or ':5,' in isdiracslots or ':6,' in isdiracslots or ':7,' in isdiracslots or ':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac1
+            - conditions: "{{ ':0' in isdirac and ':2,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':0' in isdirac and (':3,' in isdiracslots or ':4,' in isdiracslots or ':5,' in isdiracslots or ':6,' in isdiracslots or ':7,' in isdiracslots or ':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac2
+            - conditions: "{{ ':1' in isdirac and ':3,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':1' in isdirac and (':4,' in isdiracslots or ':5,' in isdiracslots or ':6,' in isdiracslots or ':7,' in isdiracslots or ':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac3
+            - conditions: "{{ ':2' in isdirac and ':4,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':2' in isdirac and (':5,' in isdiracslots or ':6,' in isdiracslots or ':7,' in isdiracslots or ':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac4
+            - conditions: "{{ ':3' in isdirac and ':5,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':3' in isdirac and (':6,' in isdiracslots or ':7,' in isdiracslots or ':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac5
+            - conditions: "{{ ':4' in isdirac and ':6,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':4' in isdirac and (':7,' in isdiracslots or ':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac6
+            - conditions: "{{ ':5' in isdirac and ':7,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':5' in isdirac and (':8,' in isdiracslots or ':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac7
+            - conditions: "{{ ':6' in isdirac and ':8,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':6' in isdirac and (':9,' in isdiracslots or ':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac8
+            - conditions: "{{ ':7' in isdirac and ':9,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':7' in isdirac and (':10,' in isdiracslots or ':11,' in isdiracslots) }}"
+              sequence:
+                action: shell_command.klipsch_dirac9
+            - conditions: "{{ ':8' in isdirac and ':10,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_diracoff
+            - conditions: "{{ ':8' in isdirac and ':11,' in isdiracslots }}"
+              sequence:
+                action: shell_command.klipsch_dirac10
+          default:
+            sequence:
+                action: shell_command.klipsch_diracoff
+
+klipsch_frontheight_volumeup:
+    alias: 'Volume Up Front Height Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_frontheightvolume
+          response_variable: isfhvolume1
+        - variables:
+            isfhvolume: '"{{ isfhvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-6}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n5
+            - conditions: "{{ ':-5}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n4
+            - conditions: "{{ ':-4}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n3
+            - conditions: "{{ ':-3}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n2
+            - conditions: "{{ ':-2}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n1
+            - conditions: "{{ ':-1}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_0
+            - conditions: "{{ ':0}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_1
+            - conditions: "{{ ':1}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_2
+            - conditions: "{{ ':2}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_3
+            - conditions: "{{ ':3}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_4
+            - conditions: "{{ ':4}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_5
+            - conditions: "{{ ':5}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_6
+            - conditions: "{{ ':6}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_frontheight_0
+
+klipsch_frontheight_volumedown:
+    alias: 'Volume Down Front Height Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_frontheightvolume
+          response_variable: isfhvolume1
+        - variables:
+            isfhvolume: '"{{ isfhvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_5
+            - conditions: "{{ ':5}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_4
+            - conditions: "{{ ':4}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_3
+            - conditions: "{{ ':3}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_2
+            - conditions: "{{ ':2}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_1
+            - conditions: "{{ ':1}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_0
+            - conditions: "{{ ':0}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n1
+            - conditions: "{{ ':-1}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n2
+            - conditions: "{{ ':-2}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n3
+            - conditions: "{{ ':-3}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n4
+            - conditions: "{{ ':-4}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n5
+            - conditions: "{{ '-5}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n6
+            - conditions: "{{ ':-6}' in isfhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_frontheight_n6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_frontheight_0
+
+klipsch_sideleft_volumeup:
+    alias: 'Volume Up Side Left Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_sideleftvolume
+          response_variable: isslvolume1
+        - variables:
+            isslvolume: '"{{ isslvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-6}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n5
+            - conditions: "{{ ':-5}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n4
+            - conditions: "{{ ':-4}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n3
+            - conditions: "{{ ':-3}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n2
+            - conditions: "{{ ':-2}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n1
+            - conditions: "{{ ':-1}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_0
+            - conditions: "{{ ':0}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_1
+            - conditions: "{{ ':1}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_2
+            - conditions: "{{ ':2}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_3
+            - conditions: "{{ ':3}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_4
+            - conditions: "{{ ':4}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_5
+            - conditions: "{{ ':5}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_6
+            - conditions: "{{ ':6}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_sideleft_0
+
+klipsch_sideleft_volumedown:
+    alias: 'Volume Down Side Left Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_sideleftvolume
+          response_variable: isslvolume1
+        - variables:
+            isslvolume: '"{{ isslvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_5
+            - conditions: "{{ ':5}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_4
+            - conditions: "{{ ':4}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_3
+            - conditions: "{{ ':3}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_2
+            - conditions: "{{ ':2}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_1
+            - conditions: "{{ ':1}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_0
+            - conditions: "{{ ':0}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n1
+            - conditions: "{{ ':-1}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n2
+            - conditions: "{{ ':-2}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n3
+            - conditions: "{{ ':-3}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n4
+            - conditions: "{{ ':-4}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n5
+            - conditions: "{{ '-5}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n6
+            - conditions: "{{ ':-6}' in isslvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideleft_n6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_sideleft_0
+
+klipsch_sideright_volumeup:
+    alias: 'Volume Up Side Right Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_siderightvolume
+          response_variable: issrvolume1
+        - variables:
+            issrvolume: '"{{ issrvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-6}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n5
+            - conditions: "{{ ':-5}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n4
+            - conditions: "{{ ':-4}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n3
+            - conditions: "{{ ':-3}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n2
+            - conditions: "{{ ':-2}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n1
+            - conditions: "{{ ':-1}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_0
+            - conditions: "{{ ':0}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_1
+            - conditions: "{{ ':1}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_2
+            - conditions: "{{ ':2}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_3
+            - conditions: "{{ ':3}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_4
+            - conditions: "{{ ':4}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_5
+            - conditions: "{{ ':5}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_6
+            - conditions: "{{ ':6}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_sideright_0
+
+klipsch_sideright_volumedown:
+    alias: 'Volume Down Side Right Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_siderightvolume
+          response_variable: issrvolume1
+        - variables:
+            issrvolume: '"{{ issrvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_5
+            - conditions: "{{ ':5}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_4
+            - conditions: "{{ ':4}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_3
+            - conditions: "{{ ':3}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_2
+            - conditions: "{{ ':2}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_1
+            - conditions: "{{ ':1}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_0
+            - conditions: "{{ ':0}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n1
+            - conditions: "{{ ':-1}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n2
+            - conditions: "{{ ':-2}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n3
+            - conditions: "{{ ':-3}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n4
+            - conditions: "{{ ':-4}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n5
+            - conditions: "{{ '-5}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n6
+            - conditions: "{{ ':-6}' in issrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_sideright_n6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_sideright_0
+
+klipsch_backheight_volumeup:
+    alias: 'Volume Up Back Height Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_backheightvolume
+          response_variable: isbhvolume1
+        - variables:
+            isbhvolume: '"{{ isbhvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-6}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n5
+            - conditions: "{{ ':-5}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n4
+            - conditions: "{{ ':-4}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n3
+            - conditions: "{{ ':-3}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n2
+            - conditions: "{{ ':-2}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n1
+            - conditions: "{{ ':-1}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_0
+            - conditions: "{{ ':0}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_1
+            - conditions: "{{ ':1}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_2
+            - conditions: "{{ ':2}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_3
+            - conditions: "{{ ':3}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_4
+            - conditions: "{{ ':4}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_5
+            - conditions: "{{ ':5}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_6
+            - conditions: "{{ ':6}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_backheight_0
+
+klipsch_backheight_volumedown:
+    alias: 'Volume Down Back Height Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_backheightvolume
+          response_variable: isbhvolume1
+        - variables:
+            isbhvolume: '"{{ isbhvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_5
+            - conditions: "{{ ':5}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_4
+            - conditions: "{{ ':4}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_3
+            - conditions: "{{ ':3}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_2
+            - conditions: "{{ ':2}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_1
+            - conditions: "{{ ':1}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_0
+            - conditions: "{{ ':0}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n1
+            - conditions: "{{ ':-1}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n2
+            - conditions: "{{ ':-2}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n3
+            - conditions: "{{ ':-3}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n4
+            - conditions: "{{ ':-4}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n5
+            - conditions: "{{ '-5}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n6
+            - conditions: "{{ ':-6}' in isbhvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backheight_n6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_backheight_0
+
+klipsch_backleft_volumeup:
+    alias: 'Volume Up Back Left Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_backleftvolume
+          response_variable: isblvolume1
+        - variables:
+            isblvolume: '"{{ isblvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-6}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n5
+            - conditions: "{{ ':-5}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n4
+            - conditions: "{{ ':-4}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n3
+            - conditions: "{{ ':-3}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n2
+            - conditions: "{{ ':-2}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n1
+            - conditions: "{{ ':-1}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_0
+            - conditions: "{{ ':0}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_1
+            - conditions: "{{ ':1}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_2
+            - conditions: "{{ ':2}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_3
+            - conditions: "{{ ':3}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_4
+            - conditions: "{{ ':4}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_5
+            - conditions: "{{ ':5}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_6
+            - conditions: "{{ ':6}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_backleft_0
+
+klipsch_backleft_volumedown:
+    alias: 'Volume Down Back Left Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_backleftvolume
+          response_variable: isblvolume1
+        - variables:
+            isblvolume: '"{{ isblvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_5
+            - conditions: "{{ ':5}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_4
+            - conditions: "{{ ':4}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_3
+            - conditions: "{{ ':3}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_2
+            - conditions: "{{ ':2}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_1
+            - conditions: "{{ ':1}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_0
+            - conditions: "{{ ':0}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n1
+            - conditions: "{{ ':-1}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n2
+            - conditions: "{{ ':-2}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n3
+            - conditions: "{{ ':-3}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n4
+            - conditions: "{{ ':-4}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n5
+            - conditions: "{{ '-5}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n6
+            - conditions: "{{ ':-6}' in isblvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backleft_n6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_backleft_0
+                
+klipsch_backright_volumeup:
+    alias: 'Volume Up Back Right Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_backrightvolume
+          response_variable: isbrvolume1
+        - variables:
+            isbrvolume: '"{{ isbrvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-6}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n5
+            - conditions: "{{ ':-5}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n4
+            - conditions: "{{ ':-4}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n3
+            - conditions: "{{ ':-3}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n2
+            - conditions: "{{ ':-2}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n1
+            - conditions: "{{ ':-1}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_0
+            - conditions: "{{ ':0}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_1
+            - conditions: "{{ ':1}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_2
+            - conditions: "{{ ':2}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_3
+            - conditions: "{{ ':3}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_4
+            - conditions: "{{ ':4}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_5
+            - conditions: "{{ ':5}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_6
+            - conditions: "{{ ':6}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_backright_0
+
+klipsch_backright_volumedown:
+    alias: 'Volume Down Back Right Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_backrightvolume
+          response_variable: isbrvolume1
+        - variables:
+            isbrvolume: '"{{ isbrvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_5
+            - conditions: "{{ ':5}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_4
+            - conditions: "{{ ':4}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_3
+            - conditions: "{{ ':3}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_2
+            - conditions: "{{ ':2}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_1
+            - conditions: "{{ ':1}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_0
+            - conditions: "{{ ':0}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n1
+            - conditions: "{{ ':-1}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n2
+            - conditions: "{{ ':-2}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n3
+            - conditions: "{{ ':-3}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n4
+            - conditions: "{{ ':-4}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n5
+            - conditions: "{{ '-5}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n6
+            - conditions: "{{ ':-6}' in isbrvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_backright_n6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_backright_0
+
+klipsch_wiredsubwoofer_volumeup:
+    alias: 'Volume Up Wired Subwoofer Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_wiredsubwoofervolume
+          response_variable: iswiredsubvolume1
+        - variables:
+            iswiredsubvolume: '"{{ iswiredsubvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-12}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n11
+            - conditions: "{{ ':-11}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n10
+            - conditions: "{{ ':-10}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n9
+            - conditions: "{{ ':-9}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n8
+            - conditions: "{{ ':-8}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n7
+            - conditions: "{{ ':-7}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n6
+            - conditions: "{{ ':-6}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n5
+            - conditions: "{{ ':-5}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n4
+            - conditions: "{{ ':-4}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n3
+            - conditions: "{{ ':-3}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n2
+            - conditions: "{{ ':-2}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n1
+            - conditions: "{{ ':-1}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_0
+            - conditions: "{{ ':0}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_1
+            - conditions: "{{ ':1}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_2
+            - conditions: "{{ ':2}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_3
+            - conditions: "{{ ':3}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_4
+            - conditions: "{{ ':4}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_5
+            - conditions: "{{ '5}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_6
+            - conditions: "{{ ':6}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_wiredsubwoofer_0
+
+klipsch_wiredsubwoofer_volumedown:
+    alias: 'Volume Down Wired Subwoofer Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_wiredsubwoofervolume
+          response_variable: iswiredsubvolume1
+        - variables:
+            iswiredsubvolume: '"{{ iswiredsubvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_5
+            - conditions: "{{ ':5}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_4
+            - conditions: "{{ ':4}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_3
+            - conditions: "{{ ':3}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_2
+            - conditions: "{{ ':2}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_1
+            - conditions: "{{ ':1}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_0
+            - conditions: "{{ ':0}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n1
+            - conditions: "{{ ':-1}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n2
+            - conditions: "{{ ':-2}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n3
+            - conditions: "{{ ':-3}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n4
+            - conditions: "{{ ':-4}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n5
+            - conditions: "{{ ':-5}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n6
+            - conditions: "{{ ':-6}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n7
+            - conditions: "{{ ':-7}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n8
+            - conditions: "{{ ':-8}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n9
+            - conditions: "{{ ':-9}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n10
+            - conditions: "{{ ':-10}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n11
+            - conditions: "{{ ':-11}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n12
+            - conditions: "{{ ':-12}' in iswiredsubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wiredsubwoofer_n12
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_wiredsubwoofer_0
+
+klipsch_wirelesssubwoofers_volumeup:
+    alias: 'Volume Up Wireless Subwoofers Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-plus
+    sequence:
+        - action: shell_command.klipsch_check_wirelesssubwoofersvolume
+          response_variable: iswirelesssubvolume1
+        - variables:
+            iswirelesssubvolume: '"{{ iswirelesssubvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':-12}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n11
+            - conditions: "{{ ':-11}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n10
+            - conditions: "{{ ':-10}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n9
+            - conditions: "{{ ':-9}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n8
+            - conditions: "{{ ':-8}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n7
+            - conditions: "{{ ':-7}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n6
+            - conditions: "{{ ':-6}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n5
+            - conditions: "{{ ':-5}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n4
+            - conditions: "{{ ':-4}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n3
+            - conditions: "{{ ':-3}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n2
+            - conditions: "{{ ':-2}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n1
+            - conditions: "{{ ':-1}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_0
+            - conditions: "{{ ':0}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_1
+            - conditions: "{{ ':1}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_2
+            - conditions: "{{ ':2}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_3
+            - conditions: "{{ ':3}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_4
+            - conditions: "{{ ':4}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_5
+            - conditions: "{{ '5}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_6
+            - conditions: "{{ ':6}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_6
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_wirelesssubwoofers_0
+
+klipsch_wirelesssubwoofers_volumedown:
+    alias: 'Volume Down Wireless Subwoofers Klipsch Flexus'
+    mode: single
+    icon: mdi:volume-minus
+    sequence:
+        - action: shell_command.klipsch_check_wirelesssubwoofersvolume
+          response_variable: iswirelesssubvolume1
+        - variables:
+            iswirelesssubvolume: '"{{ iswirelesssubvolume1 }}"'
+        - choose:
+            - conditions: "{{ ':6}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_5
+            - conditions: "{{ ':5}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_4
+            - conditions: "{{ ':4}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_3
+            - conditions: "{{ ':3}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_2
+            - conditions: "{{ ':2}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_1
+            - conditions: "{{ ':1}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_0
+            - conditions: "{{ ':0}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n1
+            - conditions: "{{ ':-1}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n2
+            - conditions: "{{ ':-2}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n3
+            - conditions: "{{ ':-3}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n4
+            - conditions: "{{ ':-4}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n5
+            - conditions: "{{ ':-5}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n6
+            - conditions: "{{ ':-6}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n7
+            - conditions: "{{ ':-7}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n8
+            - conditions: "{{ ':-8}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n9
+            - conditions: "{{ ':-9}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n10
+            - conditions: "{{ ':-10}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n11
+            - conditions: "{{ ':-11}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n12
+            - conditions: "{{ ':-12}' in iswirelesssubvolume }}"
+              sequence:
+                action: shell_command.klipsch_volume_wirelesssubwoofers_n12
+          default:
+            sequence:
+                action: shell_command.kklipsch_volume_wirelesssubwoofers_0
